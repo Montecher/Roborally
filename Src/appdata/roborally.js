@@ -108,7 +108,10 @@
     const cmin = bbox[1] * tile_size ;
     const lsize = (bbox[2]-bbox[0]+1)*tile_size ;
     const csize = (bbox[3]-bbox[1]+1)*tile_size ;
-    board_image.setAttribute('viewBox', `${lmin} ${cmin} ${lsize} ${csize}`) ;
+
+    const dpi = board_image.getAttribute('width') /csize ;
+    board_image.setAttribute('height', dpi * lsize) ;
+    board_image.setAttribute('viewBox', `${cmin} ${lmin} ${csize} ${lsize}`) ;
   }
 
   function put_element(name, line, column) {

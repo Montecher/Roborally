@@ -104,6 +104,7 @@ int main(int argc, char** argv) {
 
   //listen on port 8080
 
+  std::cout << "pointez votre navigateur sur l'adresse : http://localhost:8080" << std::endl ;
   srv.listen("localhost", 8080) ;
 
   return 0 ;
