@@ -4,10 +4,10 @@ CXX = g++
 LD = g++
 RM = rm -f
 
-CFLAGS = -Wall -Wextra --std=c++14 -pedantic
+CFLAGS = -Wall -Wextra --std=c++14 -pedantic -g
 LDFLAGS = -lpthread
 
-MODULES = board app
+MODULES = board test Graph
 
 SOURCES = $(foreach module, $(MODULES), src/$(module).cpp)
 OBJS    = $(foreach module, $(MODULES), build/$(module).o)
