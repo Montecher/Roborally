@@ -7,7 +7,7 @@ Graph::Graph(Robot initial, Board board) {
     toEvaluate.push(initial);
 
     while (!toEvaluate.empty()) {
-        Robot robot = toEvaluate.back();
+        Robot robot = toEvaluate.front();
         toEvaluate.pop();
 
         if (graph.find(robot) == graph.end()) {
