@@ -22,7 +22,7 @@ Graph::Graph(Robot initial, Board board) {
                 Robot::Move::U_TURN
             };
             for (Robot::Move movement: movements) {
-                Robot copy = robot;  //TODO: or is it ? <Vsauce music starts>
+                Robot copy = robot;
                 board.play(copy, movement);
                 if (copy.status != Robot::Status::DEAD) {
                     arcs.push_back(std::pair<Robot::Move, Robot>(movement, copy));
