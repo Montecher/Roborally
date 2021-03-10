@@ -376,4 +376,51 @@ void Board::play (
     return ;
   }
 }
+
+// ostream operators for the elements of the robot
+std::ostream& operator << (std::ostream& out, const Robot::Status& status) {
+    if (status == Robot::Status::EAST) {
+        return out << "EAST";
+    }
+    if (status == Robot::Status::DEAD) {
+        return out << "DEAD";
+    }
+    if (status == Robot::Status::NORTH) {
+        return out << "NORTH";
+    }
+    if (status == Robot::Status::SOUTH) {
+        return out << "SOUTH";
+    }
+    if (status == Robot::Status::WEST) {
+        return out << "WEST";
+    }
+}
+
+std::ostream& operator << (std::ostream& out, const Robot::Move& move) {
+    if (move == Robot::Move::BACKWARD_1) {
+        return out << "BACKWARD_1";
+    }
+    if (move == Robot::Move::FORWARD_1) {
+        return out << "FORWARD_1";
+    }
+    if (move == Robot::Move::FORWARD_2) {
+        return out << "BACKWARD_1";
+    }
+    if (move == Robot::Move::FORWARD_3) {
+        return out << "BACKWARD_3";
+    }
+    if (move == Robot::Move::TURN_LEFT) {
+        return out << "TURN_LEFT";
+    }
+    if (move == Robot::Move::TURN_RIGHT) {
+        return out << "TURN_RIGHT";
+    }
+    if (move == Robot::Move::U_TURN) {
+        return out << "U_TURN";
+    }
+}
+
+std::ostream& operator << (std::ostream& out, const Robot& robot) {
+    return out << "(" << robot.location.line << ", " << robot.location.column << ": " << robot.status << ")";
+}
 } //end of namespace RR

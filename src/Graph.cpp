@@ -1,4 +1,5 @@
 #include <queue>
+#include <iostream>
 #include "Graph.hpp"
 
 Graph::Graph(Robot initial, Board board) {
@@ -34,4 +35,13 @@ Graph::Graph(Robot initial, Board board) {
     }
 }
 
-
+// ostream of the graph of the board
+std::ostream& operator << (std::ostream& out, const Graph& graph) {
+    for(std::pair<Robot, std::vector<std::pair<Robot::Move, Robot>>> e: graph.graph) {
+        out << e.first << ":\n";
+        for(std::pair<Robot::Move, Robot> p: e.second) {
+            out << "\t" << p.first << ": " << p.second << "\n";
+        }
+    }
+    return out;
+}

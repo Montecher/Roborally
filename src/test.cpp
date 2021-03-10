@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
     robot.status = Robot::Status::EAST;
 
     Graph graph = Graph(robot, board);
+    cout << graph;  // test the ostream
 
     return 0;
 }

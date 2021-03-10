@@ -24,6 +24,7 @@ private:
 
 public:
     Graph(Robot initial, Board board);
+    friend std::ostream& operator<<(std::ostream& out, const Graph& graph);  // ostream of the graph of the board
 };
 
 #endif //ROBORALLY_GRAPH_HPP

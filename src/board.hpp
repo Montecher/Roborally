@@ -57,9 +57,13 @@ struct Robot {
   } ;
 
   /* A robot contains a location an a status */
-
   Location location ;
   Status status ;
+
+  // ostream operators for the elements of the robot
+  friend std::ostream& operator << (std::ostream& out, const Robot& robot);
+  friend std::ostream& operator << (std::ostream& out, const Robot::Move& move);
+  friend std::ostream& operator << (std::ostream& out, const Robot::Status& status);
 } ;
 
 /* Board */
