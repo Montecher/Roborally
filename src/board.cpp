@@ -423,4 +423,12 @@ std::ostream& operator << (std::ostream& out, const Robot::Move& move) {
 std::ostream& operator << (std::ostream& out, const Robot& robot) {
     return out << "(" << robot.location.line << ", " << robot.location.column << ": " << robot.status << ")";
 }
+
+bool Robot::operator==(const Robot &robot) const {
+    return this->location == robot.location && this->status == robot.status;
+}
+
+bool Robot::operator!=(const Robot &robot) const {
+    return !(*this == robot);
+}
 } //end of namespace RR

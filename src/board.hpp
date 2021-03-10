@@ -60,6 +60,10 @@ struct Robot {
   Location location ;
   Status status ;
 
+  // coparation operations
+  bool operator==(const Robot& robot) const;
+  bool operator!=(const Robot& robot) const;
+
   // ostream operators for the elements of the robot
   friend std::ostream& operator << (std::ostream& out, const Robot& robot);
   friend std::ostream& operator << (std::ostream& out, const Robot::Move& move);
