@@ -39,6 +39,10 @@ bool Location::operator==(const Location& rhs) const {
   return (line == rhs.line) && (column == rhs.column) ;
 }
 
+bool Location::operator!=(const Location& rhs) const {
+    return !(*this == rhs);
+}
+
 std::size_t LocationHash::operator()(const Location& l) const {
   if(sizeof(long long) == 2*sizeof(int)) {
     //this supposedly always happens
@@ -394,6 +398,7 @@ std::ostream& operator << (std::ostream& out, const Robot::Status& status) {
     if (status == Robot::Status::WEST) {
         return out << "WEST";
     }
+    return out;
 }
 
 std::ostream& operator << (std::ostream& out, const Robot::Move& move) {
@@ -404,10 +409,10 @@ std::ostream& operator << (std::ostream& out, const Robot::Move& move) {
         return out << "FORWARD_1";
     }
     if (move == Robot::Move::FORWARD_2) {
-        return out << "BACKWARD_1";
+        return out << "FORWARD_2";
     }
     if (move == Robot::Move::FORWARD_3) {
-        return out << "BACKWARD_3";
+        return out << "FORWARD_3";
     }
     if (move == Robot::Move::TURN_LEFT) {
         return out << "TURN_LEFT";
@@ -418,6 +423,7 @@ std::ostream& operator << (std::ostream& out, const Robot::Move& move) {
     if (move == Robot::Move::U_TURN) {
         return out << "U_TURN";
     }
+    return out;
 }
 
 std::ostream& operator << (std::ostream& out, const Robot& robot) {
