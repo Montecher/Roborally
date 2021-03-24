@@ -2,6 +2,7 @@
 #include "board.hpp"
 #include "Graph.hpp"
 #include "Deck.hpp"
+#include "MoveTree.h"
 
 using namespace std;
 using namespace RR;
@@ -43,6 +44,40 @@ int main(int argc, char** argv) {
     cout << "Dealt hand";
     for(auto c: hand) cout << " " << c;
     cout << endl;
+
+    MoveTree moves(robot, hand, board, 5);
+    vector<Robot::Move> test = moves.cardsUsed(dest);
+
+    cout << "| ";
+    for (auto card: test) {
+        cout << card << " | ";
+    }
+
+    hand.clear();
+    hand.push_back(Robot::Move::TURN_RIGHT);
+    hand.push_back(Robot::Move::U_TURN);
+    hand.push_back(Robot::Move::FORWARD_1);
+    hand.push_back(Robot::Move::FORWARD_1);
+    hand.push_back(Robot::Move::FORWARD_3);
+    hand.push_back(Robot::Move::BACKWARD_1);
+    hand.push_back(Robot::Move::TURN_RIGHT);
+    hand.push_back(Robot::Move::TURN_LEFT);
+    hand.push_back(Robot::Move::FORWARD_2);
+
+    cout << "| ";
+    for (auto card: hand) {
+        cout << card << " | ";
+    }
+    cout << endl;
+
+    moves=MoveTree(robot, hand, board, 5);
+    test = moves.cardsUsed(dest);
+
+    cout << "| ";
+    for (auto card: test) {
+        cout << card << " | ";
+    }
+
 
     return 0;
 }
