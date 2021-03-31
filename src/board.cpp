@@ -184,6 +184,7 @@ static Rotation tile_rotation(
 
 /* move the robot in a direction */
 static void robot_push(
+    const Board& board,
     Robot& robot, 
     Direction direction
     ) 
@@ -198,6 +199,11 @@ static void robot_push(
   /* (five years later) yeah sure */
   robot.location.line += (+direction%2) * (+direction - 2) ;
   robot.location.column += ((1 + +direction)%2) * (1 - +direction) ;
+
+  /*check that the destination tile exists*/
+  if(board.tiles.find(robot.location) == board.tiles.end()) {
+    robot.status = Robot::Status::DEAD ;
+  }
 }
 
 /* rotate robot in a direction */
@@ -244,7 +250,7 @@ static void robot_apply(
     }
 
     /* the robot is on a belt, move it */
-    robot_push(robot, dir) ;
+    robot_push(board, robot, dir) ;
 
     /* get the arrival tile, throws if does not exist */
     Board::TileType dest_tile = board.tiles.at(robot.location) ;
@@ -338,19 +344,19 @@ void Board::play (
   switch(move)
   {
     case Robot::Move::FORWARD_1 : 
-      robot_push(robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
       break ;
     case Robot::Move::FORWARD_2 : 
-      robot_push(robot, (Direction) robot.status) ;
-      robot_push(robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
       break ;
     case Robot::Move::FORWARD_3 : 
-      robot_push(robot, (Direction) robot.status) ;
-      robot_push(robot, (Direction) robot.status) ;
-      robot_push(robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
+      robot_push(*this, robot, (Direction) robot.status) ;
       break ;
     case Robot::Move::BACKWARD_1 : 
-      robot_push(robot, (Direction) ((+robot.status+2)%4)) ;
+      robot_push(*this, robot, (Direction) ((+robot.status+2)%4)) ;
       break ;
     case Robot::Move::TURN_LEFT :
       robot_rotate(robot, Rotation::LEFT) ;
