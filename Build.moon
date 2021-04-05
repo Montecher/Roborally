@@ -7,7 +7,7 @@ public var RM: {'rm', '-f'}
 var CFLAGS: {'-Wall', '-Wextra', '-g', '--std=c++14', '-pedantic'}
 var LDFLAGS: {'-lpthread'}
 
-var MODULES: {'board', 'Graph', 'test', 'MoveTree'}
+var MODULES: {'board', 'Graph', 'test', 'MoveTree', 'app'}
 
 var SOURCES: _.patsubst MODULES, '%', 'src/%.cpp'
 var OBJS:    _.patsubst MODULES, '%', 'build/%.o'

@@ -7,7 +7,7 @@ RM = rm -f
 CFLAGS = -Wall -Wextra --std=c++14 -pedantic -g
 LDFLAGS = -lpthread
 
-MODULES = board test Graph MoveTree
+MODULES = board test Graph MoveTree app
 
 SOURCES = $(foreach module, $(MODULES), src/$(module).cpp)
 OBJS    = $(foreach module, $(MODULES), build/$(module).o)

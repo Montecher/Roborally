@@ -1,25 +1,13 @@
-#include "board.hpp"
 #include "httplib.hpp"
+#include "app.hpp"
 
 #include <iostream>
 #include <sstream>
 
-int main(int argc, char** argv) {
+using namespace httplib ;
+using namespace RR ;
 
-  using namespace httplib ;
-  using namespace RR ;
-
-  // a board file must be provided
-
-  if(argc < 2) {
-    std::cout << "il faut fournir un fichier plateau" << std::endl ;
-    return 1 ;
-  }
-
-  // loading the board
-
-  Board b(argv[1]) ;
-
+int app(Board& b) {
   //http server
 
   Server srv ;
@@ -106,6 +94,5 @@ int main(int argc, char** argv) {
 
   std::cout << "pointez votre navigateur sur l'adresse : http://localhost:8080" << std::endl ;
   srv.listen("localhost", 8080) ;
-
-  return 0 ;
+  return 0;
 }
