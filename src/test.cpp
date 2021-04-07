@@ -171,6 +171,9 @@ int testrandomhand(Board& board) {
     Location dest = readlocation();
 
     auto hand = deal();
+    cout << "Dealt hand:";
+    for(auto c: hand) cout << " " << c;
+    cout << endl;
     MoveTree moves(robot, hand, board, 5);
     vector<Robot::Move> path = moves.cardsUsed(dest);
 
@@ -203,6 +206,9 @@ int testfixedhand(Board& board) {
     hand.push_back(Robot::Move::TURN_RIGHT);
     hand.push_back(Robot::Move::TURN_LEFT);
     hand.push_back(Robot::Move::FORWARD_2);
+    cout << "Dealt hand:";
+    for(auto c: hand) cout << " " << c;
+    cout << endl;
 
     MoveTree moves(robot, hand, board, 5);
     vector<Robot::Move> path = moves.cardsUsed(dest);
