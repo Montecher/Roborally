@@ -25,6 +25,12 @@ MoveTree::MoveTree(Robot position, std::vector<Robot::Move> hand, Board board, i
     }
 }
 
+MoveTree::~MoveTree() {
+    for(auto branch: branches) {
+        delete branch.second;
+    }
+}
+
 std::vector<Robot::Move> MoveTree::cardsUsed(Location goal) {
     std::queue<MoveTree*> toEvaluate;
     std::unordered_map<MoveTree*, std::pair<MoveTree*, Robot::Move>> rewindParent;

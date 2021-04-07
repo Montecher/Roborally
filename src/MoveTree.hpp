@@ -15,6 +15,7 @@ private:
 public:
     MoveTree(Robot position, std::vector<Robot::Move> hand, Board board, int movesLeft);
     std::vector<Robot::Move> cardsUsed(Location goal);
+    ~MoveTree();
 };
 
 
